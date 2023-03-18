@@ -19,28 +19,31 @@
             <div>
                 <h1 class="display" id="displayDate"><%=date%></h1>
                 <div class="tasks" id="addTaskContainer">
-                    <button type="button" id="button-done">
-                        <i id="i-done" class="tasks__i fas fa-list"></i>
-                    </button>
-                    <p id="sections"></p>
-                    <input type="text" class="tasks__input" id="addTask" value="" placeholder="Add Task..." autocomplete="off">
-                    <button type="submit" id="button" onclick="addToList()" >
-                        <i id="i-del" class="tasks__i fas fa-plus"></i>
-                    </button>
+                    <!-- <p id="sections"></p> -->
+                    <form action="/" class="tasks__form" id="taskSubmit" method="post">
+                        <button type="button" id="button-done">
+                            <i id="i-done" class="tasks__i fas fa-list"></i>
+                        </button>
+                        <input type="text" class="tasks__input" id="addTask" name="name" placeholder="Add Task..." autocomplete="off">
+                        <button type="submit" id="button" >
+                            <i id="i-del" class="tasks__i fas fa-plus"></i>
+                        </button>
+                    </form>
+                    
                 </div>
             </div>
             <div>
                 <ul class="list" id="displayList">
                 <% list.forEach(list =>{%>
                     <li id="li1" class="list__li uncomplete">
-                        <button id="done1" onclick="doneTask(this.id)">
+                        <button id=<%= list._id %> onclick="doneTask(this.id)">
                             <i class="list__li__i far fa-check-circle"></i>
                         </button>
                         <p class="list__li__p"><%= list.task_name %></p>
-                        <button id="edit1" onclick="editTask(this.id)">
+                        <button id=<%= list._id %> onclick="editTask(this.id)">
                             <i class="list__li__i fas fa-pen"></i>
                         </button>
-                        <button id="del1" onclick="deleteTask(this.id)">
+                        <button id=<%= list._id %> onclick="deleteTask(this.id)">
                             <i class="list__li__i fas fa-times"></i>
                         </button>
                     </li>

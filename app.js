@@ -2,6 +2,11 @@
 const express = require('express')
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser')
+app.use(bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
 // Connecting to database
 main().catch(err => console.log(err));
@@ -18,19 +23,6 @@ const List = new mongoose.Schema({
 
 // Creating Model object
 const ToDoList = mongoose.model("todolistdbs", List)
-
-// ToDoList.insertMany([
-//     {
-//         task_name : "Finish Assignment",
-//         task_completion : false,
-//         task_date : 2022-03-01
-//     },
-//     {
-//         task_name : "Grocery Shopping",
-//         task_completion : false,
-//         task_date : 2022-03-06
-//     }]
-// )
 
 
 //To serve static files such as images, CSS files, and JavaScript files
@@ -54,7 +46,17 @@ app.get('/', async (req, res) => {
     }
     
 })
-
+app.post('/', (req, res) => {
+    let task = req.body.name;
+    // let id = req.User._id;
+    let currentDate= new Date;
+    
+    if(task.length > 0){
+        let newTask = new ToDoList({task_name: task, task_date: currentDate ,task_completion: false})
+        newTask.save();
+        res.redirect('/');
+    }
+})
 app.listen(3000, function(){
     console.log("Server is running on port 3000")
 })

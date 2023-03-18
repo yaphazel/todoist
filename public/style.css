@@ -138,12 +138,21 @@ select {
   justify-content: space-between;
 }
 
+.tasks__form{
+  display: flex;
+  width: 100%;
+}
+/* .tasks__input{
+  display: flex;
+} */
 .tasks__i{
   color: #F4EEED;
   font-size: 1.2rem;
   font-size: 1.5rem;
   padding: 1rem;
+
 }
+
 .tasks__input:focus, .tasks__input:active{
   background: transparent;
   border:none;
