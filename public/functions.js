@@ -116,28 +116,29 @@
 // }};
 
 function doneTask(name){ // Complete tasks
-    // const buttonParent = document.getElementById(name);
-    // const liParent = buttonParent.parentElement;
-    // const pnextSib = buttonParent.nextElementSibling;
-    // const pnextSibId = buttonParent.nextElementSibling.id;
-    // if (pnextSib.style.fontStyle =="italic"){ //completed -> uncompleted
-    //     buttonParent.childNodes[0].setAttribute("class","list__li__i far fa-check-circle");
-    //     liParent.className = "list__li uncomplete"
-    //     pnextSib.style.fontStyle="normal";
-    //     pnextSib.style.textDecoration="none";
-    //     // statusUpdate(false, pnextSibId);
-    //     // countUpdate();
-    //     // filterTasks();
-    // }
-    // else{ //uncompleted -> completed
-    //     buttonParent.childNodes[0].setAttribute("class","list__li__i fas fa-check-circle");
-    //     liParent.className = "list__li complete"
-    //     pnextSib.style.fontStyle="italic";
-    //     pnextSib.style.textDecoration="line-through";
-    //     // statusUpdate(true, pnextSibId);
-    //     // countUpdate()
-    //     // filterTasks();
-    // }    
+    const buttonParent = document.getElementById(name);
+    console.log(buttonParent.childNodes[0]);
+    const liParent = buttonParent.parentElement;
+    const pnextSib = buttonParent.nextElementSibling;
+    const pnextSibId = buttonParent.nextElementSibling.id;
+    if (pnextSib.style.fontStyle =="italic"){ //completed -> uncompleted
+        //buttonParent.childNodes[0].setAttribute("class","list__li__i far fa-check-circle");
+        liParent.className = "list__li uncomplete"
+        pnextSib.style.fontStyle="normal";
+        pnextSib.style.textDecoration="none";
+        // statusUpdate(false, pnextSibId);
+        // countUpdate();
+        // filterTasks();
+    }
+    else{ //uncompleted -> completed
+        //buttonParent.childNodes[0].setAttribute("class","list__li__i fas fa-check-circle");
+        liParent.className = "list__li complete"
+        pnextSib.style.fontStyle="italic";
+        pnextSib.style.textDecoration="line-through";
+        // statusUpdate(true, pnextSibId);
+        // countUpdate()
+        // filterTasks();
+    }    
 }
 
 function deleteTask(name){ // Delete tasks;
